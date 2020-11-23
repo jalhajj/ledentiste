@@ -1,0 +1,207 @@
+﻿@model Dentist.ViewModels.PatientTreatmentViewModel
+
+
+
+@{
+    ViewBag.Title = "Treatment Page";
+}
+<style>
+
+    .completed {
+        color:green;
+        font-weight:bold
+    }
+    .planed {
+
+        color:orange;
+        font-weight:bold;
+    }
+    .done{
+        color:red;
+        font-weight:bold;
+    }
+</style>
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2> @Html.DisplayFor(model => model.Patient.FirstName) @Html.DisplayFor(model => model.Patient.LastName) </h2>
+        </div>
+        <div class="col-sm-3">
+            <button class=".btn-primary">
+                <a href="/Paiements/Index/@Model.Patient.PatientID">View Payments</a>
+                </button>
+
+</div>
+        <div class="col-sm-3">
+           
+            <h2 style="color:red"> Balance: @Html.DisplayFor(model => model.Patient.Balance) </h2>
+
+        </div>
+    </>
+
+    <div class="container">
+
+        
+        @{Html.RenderAction("LoadTheChart", "Treatments",new { myobj = Model.Treatments});}
+
+    </div>
+
+
+    <div class="row">
+        <div>
+            <h4> Treatment Plans</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            @foreach (var treatmentPlan in Model.TreatmentPlans)
+            {
+                <p>
+                    @treatmentPlan.TreatmentDescription
+                    <a href="/TreatmentPlans/Edit/@treatmentPlan.TreatmentPlanID">Edit</a> |
+                    <a href="/TreatmentPlans/Delete/@treatmentPlan.TreatmentPlanID">Delete</a>
+                </p>
+            }
+        </div>
+
+        <div class="col-lg-6">
+                    <h3> Add new Treatment Plan</h3>
+                    <textarea id="treatmentPlanDetail"></textarea>
+                    <button class=".btn-primary" id="treatmentPlanBtn" data-patient-id="@Model.Patient.PatientID">
+                        Save
+                    </button>
+
+            </div>
+        </div>
+    </div>
+   
+    <div class="row" style="height:100 px">
+        
+    </div>
+
+
+       
+            <div class="row" style="margin-bottom:10px">
+                <button class=".btn-primary">
+                    @Html.ActionLink("Add New Treatment", "Create", new { patientId = Model.Patient.PatientID })
+                    
+                </button>
+
+            </div>
+
+ 
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table" id="mytable">
+                <thead>
+                    <tr>
+                        <th>Treatment Type</th>
+                        <th>Teeth Number</th>
+                        <th> Cost</th>
+                        <th>Paid</th>
+                        <th>Rest</th>
+                        <th>Date</th>
+                        <th>Note</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+
+                        double rest,cost,paid;
+                        
+                    }
+
+                    @foreach (var item in Model.Treatments)
+                    {
+                        cost = item.Cost;
+                        paid = item.Paid;
+                        rest = cost - paid;
+
+                        var color = rest != 0 ? "red" : "black";
+
+                     
+
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.TeatmentType)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TeethNumber)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Cost)</td>
+                            <td style="color:green">@Html.DisplayFor(modelItem => item.Paid)</td>
+                            <td style="color:@color">@rest</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Note)</td>
+                            <td>@Html.DisplayFor(modelItem=> item.Status)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.TreatmentID }) |
+                                @Html.ActionLink("Xray", "AddNewXray", new { id = item.TreatmentID }) |
+                                @Html.ActionLink("Add Payment", "AddNewPaiement", new { id = item.TreatmentID }) |
+                                @Html.ActionLink("Add to Lab", "AddToLab", new { id = item.TreatmentID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.TreatmentID })
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+@section scripts
+{
+
+  <script>
+    
+
+        var editor;
+        $(document).ready(function () {
+
+            $('#mytable').DataTable()
+
+           
+
+
+             });
+
+
+
+
+
+    $(function () {
+        $('#treatmentPlanBtn').unbind('click');
+        $('#treatmentPlanBtn').on('click', function () {
+
+            var obj = {};
+            obj.txtValue = $("#treatmentPlanDetail").val();
+            obj.PatientID =  @Model.Patient.PatientID  
+                
+
+            
+            $.ajax({
+                url: "/Treatments/AddNewTreatmentPlan",
+                type: 'POST',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                data: JSON.stringify({
+                    obj
+                }),
+                async: false,
+                success: function (data) {
+                    window.location.href = data;
+                }
+            });
+       });
+   });
+</script>
+}
+
+
+

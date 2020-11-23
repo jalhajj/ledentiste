@@ -1,0 +1,86 @@
+﻿@model      Dentist.ViewModels.PatientTreatmentViewModel
+
+@{
+    ViewBag.Title = "TreatmentPage";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.DisplayFor(model => model.Patient.FirstName)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayFor(model => model.Patient.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MyProperty)
+        </th>
+        <th>
+            @Html.DisplayFor(model => model.Patient.Balance);
+
+
+#line default
+#line hidden
+
+#line 6 "c:\Users\User\Documents\Visual Studio 2015\Projects\Dentist\Dentist\Views\Treatments\Index.cshtml"
+            foreach(var treatmentPlan in Model.TreatmentPlans)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor("scripts", () => {
+
+
+#line 17 "c:\Users\User\Documents\Visual Studio 2015\Projects\Dentist\Dentist\Views\Treatments\Index.cshtml"
+           __o = Model.Patient.PatientID;
+
+
+#line default
+#line hidden
+
+#line 18 "c:\Users\User\Documents\Visual Studio 2015\Projects\Dentist\Dentist\Views\Treatments\Index.cshtml"
+           __o = Html.ActionLink("AddNewTreatmentPlan", "AddNewTreatmentPlan");
+
+
+#line default
+#line hidden
+       })
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeatmentType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MyProperty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TreatmentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TreatmentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TreatmentID })
+        </td>
+    </tr>
+}
+
+</table>

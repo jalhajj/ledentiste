@@ -1,0 +1,111 @@
+﻿@model Dentist.ViewModels.PaiementViewModel
+@{
+    ViewBag.Title = "Add Payment";
+}
+
+<h2>Add Payment</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Paiements.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Paiements.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Paiements.Amount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Paiements.PaidDate, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.Paiements.PaidDate, "", new { @class = "text-danger" })
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatments.Cost, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatments.Cost, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Treatments.Cost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatments.Paid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatments.Paid, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Treatments.Paid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    
+        <div class="form-group">
+            @Html.LabelFor(model => model.Patient.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Patient.FirstName, new { htmlAttributes = new { @class = "form-control",   @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Patient.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatments.TeatmentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatments.TeatmentType, new { htmlAttributes = new { @class = "form-control",@readonly ="readonly" } })
+                @Html.ValidationMessageFor(model => model.Treatments.TeatmentType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div>
+            @Html.HiddenFor(model => model.Paiements.PatientID);
+        </div>
+        <div>
+            @Html.HiddenFor(model => model.Paiements.TreatmentID);
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="container">
+    <h3>List Of Payments For @Model.Treatments.TeatmentType</h3>
+    <div class="row">
+        <table id="Mytable" class="table">
+          
+              <thead>
+                  <tr>
+                      <th>Amount</th>
+                      <th>Date</th>
+                  </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ListOfPaiements)
+                {
+                    <tr>
+                        <td>@item.Amount</td>
+                        <td>@item.PaidDate</td>
+                    </tr>
+                }
+            </tbody>
+
+            <tfoot>
+
+
+            </tfoot>
+        </table>
+
+    </div>
+
+</div>
+
+<div>
+    <a href="/Treatments/Index/@Model.Patient.PatientID">Back to List </a>
+</div>

@@ -1,0 +1,36 @@
+﻿
+
+
+
+@{
+    ViewBag.Title = "TreatmentPage";
+}
+@section scripts
+{
+    
+    <script>
+        bootbox.prompt({
+            title: "Please Enter the amount",
+            inputType: 'number',
+            inputOptions: [
+                {
+                    text: 'Choice One',
+                    value: '1',
+                },
+                {
+                    text: 'Choice Two',
+                    value: '2',
+                },
+                {
+                    text: 'Choice Three',
+                    value: '3',
+                }
+            ],
+            callback: function (result) {
+                bootbox.alert(result);
+            },
+            cancel: function(){alert("cancel")}
+        });
+       
+</script>  
+    }

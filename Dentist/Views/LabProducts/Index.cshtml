@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Dentist.ViewModels.LabproductsViewModel>
+
+@{
+    ViewBag.Title = "List Of Lab Treatments";
+}
+
+<h2>List of Lab Treatments</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Labproducts.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Treatments.TeatmentType)
+        </th>
+        <th>
+           Patient Name
+        </th>
+        <th>
+           Lab Cost
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Treatments.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Labproducts.LabName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Labproducts.Date)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.Labproducts.ProductName
+        </td>
+        <td>
+           @item.Treatments.TeatmentType
+        </td>
+        <td>
+            @item.PatientName
+        </td>
+        <td>
+            @item.Labproducts.Cost
+        </td>
+        <td>
+            @item.Treatments.Cost
+        </td>
+        <td>
+            @item.Labproducts.LabName
+        </td>
+        <td>
+            @item.Labproducts.Date
+        </td>
+   
+        <td>
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.Labproducts.LabProductID })
+        </td>
+    </tr>
+}
+
+</table>

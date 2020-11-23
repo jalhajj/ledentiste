@@ -1,0 +1,65 @@
+﻿@model Dentist.ViewModels.XrayViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+ 
+img {
+box-shadow:5px 5px 5px #aaaaaa;
+margin-top:10px;
+margin-bottom:10px;
+}
+</style>
+<h2>Xray for @Model.patient.FirstName @Model.patient.LastName</h2>
+<h3>Treatment: @Model.treatment.TeatmentType</h3>
+
+@using (Html.BeginForm("Create","Xrays",FormMethod.Post,new { enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+           <h4 style="color:blue">Add Xray </h4>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" multiple/>
+            </div>
+        </div>
+
+       
+        @Html.HiddenFor(model => model.XrayModel.TreatmentID)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-center text-lg-left"  >
+            <h4 style="color:blue">List of Xrays</h4>
+            @foreach (var p in Model.savedXray)
+            {
+
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <p> @p.XrayFileName</p>
+                    <img class="img-fluid img-thumbnail" src="@Url.Content(p.XrayPath)">
+                    <p>@p.UploadDate</p>
+                </div>
+            }
+
+        </div>
+
+
+    </div>
+}
+
+<div>
+    <a href="/Treatments/Index/@Model.patient.PatientID">Back to Treatments </a>
+</div>

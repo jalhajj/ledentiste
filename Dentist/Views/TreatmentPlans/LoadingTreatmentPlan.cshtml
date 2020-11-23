@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Dentist.Models.TreatmentPlan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+          
+        </th>
+
+        <th></th>b
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreatmentDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TreatmentPlanID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TreatmentPlanID })
+        </td>
+    </tr>
+}
+
+</table>

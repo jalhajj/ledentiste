@@ -1,0 +1,103 @@
+﻿@model Dentist.ViewModels.TreatmentViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Treatment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Treatment.TreatmentID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatment.TeatmentType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="float:right">
+
+                @Html.DropDownListFor(model => model.Treatment.TeatmentType, new SelectList(Model.Treatments, "Description", "Description"), "Select Treatment Type")
+
+                @Html.ValidationMessageFor(model => model.Treatment.TeatmentType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatment.Cost, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatment.Cost, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Treatment.Cost, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatment.Paid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatment.Paid, new { htmlAttributes = new { @class = "form-control" , @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Treatment.Paid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatment.TeethNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatment.TeethNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Treatment.TeethNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatment.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatment.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Treatment.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatment.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Treatment.Note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Treatment.Note, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Treatment.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Treatment.Status, new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="Planned", Value = "Planned" },
+                       new SelectListItem{ Text="Completed", Value = "Completed" }
+
+                    }, new { htmlAttributes = new { @class = "dropdown" } })
+                @Html.ValidationMessageFor(model => model.Treatment.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div>
+
+            @Html.HiddenFor(model => model.Treatment.PatientID)
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+   <a href="/Treatments/Index/@Model.Treatment.PatientID">Back to Patient </a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

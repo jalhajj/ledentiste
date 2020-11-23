@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Dentist.Models.PaiementsTreatmentsPatients>
+
+@{
+    ViewBag.Title = "Payements";
+}
+
+<h2>List Of Payements</h2>
+
+<style>
+
+    .dt-btn{
+
+        background-color: rgb(221, 221, 221);
+        border-bottom-color: rgb(221, 221, 221);
+        border-bottom-style: outset;
+border-bottom-width: 2px;
+border-image-outset: 0px;
+border-image-repeat: stretch;
+border-image-slice: 100%;
+border-image-source: none;
+border-image-width: 1;
+border-left-color: rgb(221, 221, 221);
+border-left-style: outset;
+border-left-width: 2px;
+border-right-color: rgb(221, 221, 221);
+border-right-style: outset;
+border-right-width: 2px;
+border-top-color: rgb(221, 221, 221);
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+color: rgb(119, 119, 119);
+border-top-style: outset;
+border-top-width: 2px;
+display:inline-block
+    }
+</style>
+<table class="table" id="mytable">
+    <thead>
+        <tr>
+            <th>
+                Patient Name
+            </th>
+            <th>Treatment</th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Paid Date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.PatientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TreatmentType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaiementDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot></tfoot>
+
+</table>
+
+@section scripts
+{
+    <script>
+        
+        var editor;
+        $(document).ready(function () {
+            $('#mytable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'copyHtml5',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+
+                    }
+                ]
+            });
+
+
+        });
+    </script>
+    }

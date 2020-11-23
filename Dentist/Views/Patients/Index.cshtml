@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Dentist.Models.Patient>
+
+@{
+    ViewBag.Title = "Patients";
+}
+
+<h2>List Of Patients</h2>
+
+<button class=".btn-primary">
+        @Html.ActionLink("Create New Patient", "Create")
+</button>
+
+
+   <div class="container" style="margin-top:10px">
+       <div class="row">
+           <table class="table" id="mytable">
+               <thead>
+                   <tr>
+                       <th>
+                          Name
+                       </th>
+                       <th>
+                           @Html.DisplayNameFor(model => model.MobileNumber)
+                       </th>
+                       <th>
+                           @Html.DisplayNameFor(model => model.DateOfBirth)
+
+                       </th>
+                      
+                       <th>
+                           @Html.DisplayNameFor(model => model.MedicalHistory)
+                       </th>
+                       <th>
+                           @Html.DisplayNameFor(model => model.Balance)
+                       </th>
+                       <th>
+                           @Html.DisplayNameFor(model => model.Allergies)
+                       </th>
+                       <th>
+                           @Html.DisplayNameFor(model => model.Alert)
+                       </th>
+                       <th>
+                           @Html.DisplayNameFor(model => model.LastAppointment)
+                       </th>
+                       <th>
+                           @Html.DisplayNameFor(model => model.NextAppointment)
+                       </th>
+                       <th></th>
+                   </tr>
+               </thead>
+               <tbody>
+
+                   @foreach (var item in Model)
+            {
+                       <tr>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.MobileNumber)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.DateOfBirth)
+                           </td>
+
+                           <td style="color:red">
+                               @Html.DisplayFor(modelItem => item.MedicalHistory)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.Balance)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.Allergies)
+                           </td>
+                           <td style="color:red">
+                               @Html.DisplayFor(modelItem => item.Alert)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.LastAppointment)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => item.NextAppointment)
+                           </td>
+                           <td>
+                               @Html.ActionLink("Edit", "Edit", new { id = item.PatientID }) 
+                               @Html.ActionLink("Treatments", "ToTreatmentPage", new { id = item.PatientID }) 
+                               @Html.ActionLink("Payments", "ToPaiementPage", new { id = item.PatientID }) 
+                               @Html.ActionLink("Delete", "Delete", new { id = item.PatientID })
+                           </td>
+                       </tr>
+                   }
+               </tbody>
+               <tfoot></tfoot>
+           </table>
+       </div>
+</div>
+    @section scripts
+{
+        <script>
+
+            var editor;
+            $(document).ready(function () {
+                $('#mytable').DataTable()
+
+
+            });
+            function goToPage(patientId) {
+
+
+                $.ajax({
+
+                    url: '@Url.Action("ToTreatmentPage","Patients")',
+                    type: 'GET',
+                    dataType: 'json',
+                    cache: false,
+                    data: { 'id': patientId }
+
+                })
+
+            }
+
+        </script>
+    }
+<style>
+
+  
+</style>

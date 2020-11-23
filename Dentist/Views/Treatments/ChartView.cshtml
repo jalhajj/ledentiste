@@ -1,0 +1,953 @@
+﻿@model Dictionary<int,List<Dentist.Models.Treatment>>
+@{
+    Layout = null;
+}
+<style>
+
+ 
+    #teeth {
+
+        position:center
+    }
+
+    img {
+
+margin-top:10px;
+margin-bottom:10px;
+ margin-right:10px;
+}
+    .shaddow{box-shadow:5px 5px 5px #aaaaaa;}
+    td{
+
+        margin-right:10px;
+    }
+</style>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+<body >
+    @{string strtreatment=""; }
+    <table>
+        <tr>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[18].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/18.png" width="50%" height="50%" height="100%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[18])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/18.png" width="50%" height="50%" height="100%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[17].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/17.png" width="50%" height="50%" height="100%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[17])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/17.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[16].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/16.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[16])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/16.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[15].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/15.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[15])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/15.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[14].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/14.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[14])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/14.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[13].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/13.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[13])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/13.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[12].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/12.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[12])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/12.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+            </td>
+
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[11].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/11.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[11])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/11.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[21].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/21.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[21])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/21.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[22].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/22.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[22])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/22.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[23].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/23.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[23])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/23.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[24].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/24.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[24])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/24.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[25].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/25.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[25])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/25.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[26].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/26.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[26])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/26.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[27].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/27.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[27])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/27.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[28].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/28.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[28])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/28.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <tr/>
+
+
+
+
+
+
+        <tr>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[48].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/48.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[48])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/48.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[47].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/47.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[47])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/47.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[46].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/46.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[46])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/46.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[45].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/45.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[45])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/45.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[44].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/44.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[44])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/44.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[43].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/43.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[43])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/43.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[42].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/42.png" width="50%" height="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[42])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/42.png" width="50%" height="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+            </td>
+
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[41].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/41.png" width="50%" height="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[41])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/41.png" width="50%" height="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[31].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/31.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[31])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/31.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[32].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/32.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[32])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/32.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[33].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/33.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[33])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/33.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[34].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/34.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[34])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/34.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[35].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/35.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[35])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/35.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[36].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/36.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[36])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/36.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[37].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/37.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[37])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/37.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+            <td>
+                @{  strtreatment = "";}
+                @if (Model[38].Count() == 0)
+                {
+                    <img id="teeth" src="~/Images/Chart/38.png" width="50%" height="50%" onclick="onmyload('@strtreatment')" />
+                }
+                else
+                {
+
+                    var color = "green";
+
+                    foreach (var treatment in Model[38])
+                    {
+
+                        { strtreatment += treatment.TeatmentType + "," + treatment.Status + ";"; }
+                        if (treatment.Status == "Planned")
+                        {
+                            color = "orange";
+                        }
+
+                    }
+
+                    <img id="teeth" src="~/Images/Chart/38.png" width="50%" height="50%" style="background-color:@color" onclick="onmyload('@strtreatment')" />
+
+                }
+
+            </td>
+        </tr>
+
+    </table>
+  
+</body>
+</html>
+
+
+<script>
+   
+    function onmyload(strtreatment)
+    {
+        var mystring = "";
+        var treatment = strtreatment.split(";")
+    
+        for (var i=0 ; i<treatment.length;i++)
+        {
+            mystring +=  treatment[i] + "\n";
+        }
+
+        if (mystring.length > 1)
+        {
+
+            alert(mystring)
+        }
+        else
+        {
+            alert("No Treatment ")
+        }
+    }
+  
+
+</script>

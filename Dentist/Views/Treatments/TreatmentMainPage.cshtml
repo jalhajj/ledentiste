@@ -1,0 +1,118 @@
+﻿@model Dentist.ViewModels.PatientTreatmentViewModel
+
+
+@{
+    ViewBag.Title = "TreatmentPage";
+}
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-9">
+            <h4> @Html.DisplayFor(model => model.Patient.FirstName) @Html.DisplayFor(model => model.Patient.LastName) </h4>
+        </div>
+        <div class="col-sm-3">
+            <h4 style="color:red"> Balance: @Html.DisplayFor(model => model.Patient.Balance) </h4>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3> Treatment Plans</h3>
+        </div>
+        <div class="col-sm-6">
+            <h3> Add new Treatment Plan</h3>
+            <textarea id="treatmentPlanDetail"></textarea>
+            <button class=".btn-primary" id="treatmentPlanBtn">
+               Save
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <ol>
+                @foreach(var treatmentPlan in Model.TreatmentPlans)
+                {
+                    <li>@treatmentPlan.TreatmentDescription</li>
+                }
+
+            </ol>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <tr>
+                    <th>Treatment Type</th>
+                    <th> Cost</th>
+                    <th>Property</th>
+                    <th>Date</th>
+                    <th>Note</th>
+                    <th></th>
+                </tr>
+
+@foreach (var item in Model.Treatments)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.TeatmentType)</td>
+        <td>@Html.DisplayFor(modelItem => item.Cost)</td>
+        <td>@Html.DisplayFor(modelItem => item.MyProperty)</td>
+        <td>@Html.DisplayFor(modelItem => item.Date)</td>
+        <td>@Html.DisplayFor(modelItem => item.Note)</td>
+        <td>@Html.ActionLink("lala","lala")</td>
+
+    </tr>
+}
+
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts
+{
+
+    <script>
+        $("#treatmentPlanBtn").click(function () {
+            alert("ss")
+            var treatmentText = $("#treatmentPlanDetail").val();
+            patientId = @Model.Patient.PatientID;
+
+            var param =[];
+            param.push(treatmentText);
+            param.push(patientId);
+
+
+
+            alert(param);
+
+
+            $.ajax({ 
+            
+                type:"POST",
+                
+                url:'@Html.ActionLink("AddNewTreatmentPlan", "AddNewTreatmentPlan")',
+                data:param,
+                datatype:"string",
+                cache:false,
+                success: function(data) {
+        alert("View Model Passed Successfully");
+    },  
+                error: function(xhr) {
+        alert('No Valid Data');
+    }
+
+})
+
+        });
+
+    </script>
+}
+

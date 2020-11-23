@@ -1,0 +1,34 @@
+﻿@model Dentist.Models.TreatmentPlan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TreatmentPlan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PatientID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TreatmentPlanID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
